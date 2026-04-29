@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-card: hsl(var(--card));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --font-sans: var(--font-app-sans);
+  --font-serif: var(--font-app-serif);
+}
+
+:root {
+  --background: 42 45% 97%;
+  --foreground: 30 6% 15%;
+  --border: 36 22% 87%;
+  --input: 36 22% 87%;
+  --card: 0 0% 100%;
+  --muted: 38 32% 93%;
+  --muted-foreground: 30 8% 42%;
+  --primary: 18 72% 50%;
+  --primary-foreground: 42 45% 98%;
+}
+
+* {
+  @apply border-border;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background font-sans text-foreground antialiased;
+}
+
+::selection {
+  background-color: hsl(var(--primary) / 0.2);
+  color: hsl(var(--foreground));
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-serif;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
