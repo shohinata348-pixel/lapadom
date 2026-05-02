@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { BookingCartControls } from "@/components/rooms/booking-cart-controls";
+import { BookingCartSummary } from "@/components/rooms/booking-cart-summary";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ROOMS } from "@/data/rooms";
@@ -47,15 +48,16 @@ export default function RoomsPage() {
                       </span>
                     ))}
                   </div>
-                  <Link href={`/book/${room.id}`} className="mt-auto inline-flex h-12 items-center justify-center bg-primary px-6 text-sm uppercase tracking-wide text-primary-foreground">
-                    Забронировать
-                  </Link>
+                  <div className="">
+                    <BookingCartControls roomId={room.id} />
+                  </div>
                 </div>
               </article>
             ))}
           </div>
         </section>
       </main>
+      <BookingCartSummary />
       <SiteFooter />
     </div>
   );
