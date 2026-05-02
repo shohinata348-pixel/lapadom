@@ -10,7 +10,7 @@ export function SiteFooter() {
             ЛапаДом
           </Link>
             <p className="max-w-sm text-sm leading-relaxed text-background/70">
-              Бутик-отель для собак и кошек в Москве. Спокойное, безопасное и красивое место, где вашего питомца ждут как дорогого гостя.
+              Бутик-отель для собак и кошек в Элисте. Спокойное, безопасное и красивое место, где вашего питомца ждут как дорогого гостя.
             </p>
           </div>
           <div>
@@ -25,7 +25,7 @@ export function SiteFooter() {
           <div>
             <h4 className="mb-6 text-xs uppercase tracking-wider text-background/70">Контакты</h4>
             <div className="space-y-3 text-sm text-background/70">
-              <p>Москва, ЦАО</p>
+              <p>Элиста</p>
               <p>+7 (495) 000-00-00</p>
               <p>hello@lapadom.ru</p>
               <p>Ежедневно, 09:00 - 21:00</p>

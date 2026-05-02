@@ -14,7 +14,7 @@ export default function HomePage() {
             <p className="mb-6 text-sm uppercase tracking-[0.2em] text-white/90">Премиальный отель для питомцев</p>
             <h1 className="mb-6 font-serif text-5xl leading-tight text-white md:text-7xl">Как дома, только лучше</h1>
             <p className="mx-auto mb-10 max-w-2xl text-lg text-white/85">
-              Красивое и спокойное пространство в центре Москвы, где вашего друга окружат заботой.
+              Красивое и спокойное пространство в центре Элисты, где вашего друга окружат заботой.
             </p>
             <Link href="/rooms" className="inline-flex h-12 items-center bg-primary px-8 text-sm uppercase tracking-wider text-primary-foreground">
               Выбрать номер

@@ -5,6 +5,10 @@ import { createJSONStorage, persist } from "zustand/middleware";
 
 type BookingCartState = {
   roomIds: string[];
+  customerName: string;
+  customerPhone: string;
+  setCustomerName: (name: string) => void;
+  setCustomerPhone: (phone: string) => void;
   addRoom: (roomId: string) => void;
   removeRoom: (roomId: string) => void;
   clearCart: () => void;
@@ -15,6 +19,10 @@ export const useBookingCartStore = create<BookingCartState>()(
   persist(
     (set, get) => ({
       roomIds: [],
+      customerName: "",
+      customerPhone: "",
+      setCustomerName: (name) => set({ customerName: name }),
+      setCustomerPhone: (phone) => set({ customerPhone: phone }),
       addRoom: (roomId) => {
         if (get().roomIds.includes(roomId)) {
           return;
@@ -33,7 +41,11 @@ export const useBookingCartStore = create<BookingCartState>()(
     {
       name: "booking-cart-storage",
       storage: createJSONStorage(() => localStorage),
-      partialize: (state) => ({ roomIds: state.roomIds }),
+      partialize: (state) => ({
+        roomIds: state.roomIds,
+        customerName: state.customerName,
+        customerPhone: state.customerPhone,
+      }),
     },
   ),
 );
