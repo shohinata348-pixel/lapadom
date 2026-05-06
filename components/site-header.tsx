@@ -24,6 +24,16 @@ export function SiteHeader({ compact = false }: SiteHeaderProps) {
   const homeHeaderClass = isScrolled
     ? "bg-background/90 border-b border-border/50 backdrop-blur-md"
     : "bg-transparent border-b border-transparent";
+  const mobileLinkClass = (target: "/" | "/rooms" | "/cabinet") => {
+    const isActive =
+      target === "/"
+        ? pathname === "/"
+        : target === "/rooms"
+          ? pathname === "/rooms" || pathname.startsWith("/book/")
+          : pathname === "/cabinet";
+
+    return isActive ? "text-primary" : compact || isScrolled ? "text-muted-foreground" : "text-background/85";
+  };
 
   return (
     <motion.header
@@ -64,6 +74,17 @@ export function SiteHeader({ compact = false }: SiteHeaderProps) {
           )}
         </nav>
       </div>
+      <nav className="container mx-auto flex items-center justify-center gap-5 border-t border-border/40 px-6 py-3 text-xs uppercase tracking-wide md:hidden">
+        <Link href="/" className={`${mobileLinkClass("/")} hover:text-foreground`}>
+          Главная
+        </Link>
+        <Link href="/rooms" className={`${mobileLinkClass("/rooms")} hover:text-foreground`}>
+          Номера
+        </Link>
+        <Link href="/cabinet" className={`${mobileLinkClass("/cabinet")} hover:text-foreground`}>
+          Кабинет
+        </Link>
+      </nav>
     </motion.header>
   );
 }

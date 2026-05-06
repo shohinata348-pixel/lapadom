@@ -89,8 +89,8 @@ export default function CabinetPage() {
               <div className="mb-8">
                 <h1 className="mb-2 font-serif text-4xl">Личный кабинет</h1>
                 <p className="text-muted-foreground">
-                  Зарегистрируйтесь как пользователь или войдите как админ. Админ доступ: {ADMIN_CREDENTIALS.email} /{" "}
-                  {ADMIN_CREDENTIALS.password}
+                  Зарегистрируйтесь как пользователь
+                 
                 </p>
               </div>
 
