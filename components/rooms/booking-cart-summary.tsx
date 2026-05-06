@@ -6,10 +6,18 @@ import { useBookingCartStore } from "@/stores/booking-cart-store";
 
 export function BookingCartSummary() {
   const [isOpen, setIsOpen] = useState(false);
-  const roomIds = useBookingCartStore((state) => state.roomIds);
+  const cartItems = useBookingCartStore((state) => state.cartItems);
   const removeRoom = useBookingCartStore((state) => state.removeRoom);
   const clearCart = useBookingCartStore((state) => state.clearCart);
-  const selectedRooms = ROOMS.filter((room) => roomIds.includes(room.id));
+  const selectedRooms = cartItems
+    .map((item) => {
+      const room = ROOMS.find((entry) => entry.id === item.roomId);
+      if (!room) {
+        return null;
+      }
+      return { room, booking: item };
+    })
+    .filter((item): item is { room: (typeof ROOMS)[number]; booking: (typeof cartItems)[number] } => item !== null);
   const count = selectedRooms.length;
 
   return (
@@ -49,19 +57,24 @@ export function BookingCartSummary() {
         </div>
 
         {count === 0 ? (
-          <p className="text-muted-foreground">Корзина пуста. Нажмите "Бронировать" на любой карточке.</p>
+          <p className="text-muted-foreground">Корзина пуста. Нажмите &quot;Бронировать&quot; на любой карточке.</p>
         ) : (
           <div className="flex flex-col gap-2">
-            {selectedRooms.map((room) => (
-              <div key={room.id} className="flex items-center justify-between gap-2 bg-muted px-3 py-2">
-                <span>{room.name}</span>
-                <button
-                  type="button"
-                  onClick={() => removeRoom(room.id)}
-                  className="text-xs uppercase tracking-wide text-muted-foreground hover:text-foreground"
-                >
-                  Убрать
-                </button>
+            {selectedRooms.map(({ room, booking }) => (
+              <div key={room.id} className="space-y-2 bg-muted px-3 py-2">
+                <div className="flex items-center justify-between gap-2">
+                  <span>{room.name}</span>
+                  <button
+                    type="button"
+                    onClick={() => removeRoom(room.id)}
+                    className="text-xs uppercase tracking-wide text-muted-foreground hover:text-foreground"
+                  >
+                    Убрать
+                  </button>
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  Посещение: {booking.visitDate || "не указана"} · Заселение: {booking.checkInDate || "не указана"}
+                </div>
               </div>
             ))}
           </div>
