@@ -22,7 +22,8 @@ export function BookingCartControls({ roomId }: BookingCartControlsProps) {
     }
 
     return "Обновить бронирование";
-  }, [isInCart]);
+  }, [isInCart]); 
+  // сасамба
 
   return (
     <div className="space-y-3">
